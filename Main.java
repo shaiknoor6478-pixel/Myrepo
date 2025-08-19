@@ -1,19 +1,43 @@
-class BubbleSortStatic {
-    public static void main(String[] args) {
-        int[] arr = {13, 14, 15, 16, 12, 11, 10};
-        int n = arr.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
+class Solution {
+    static int RomanToInt(String s) {
+        int Int = 0;
+        int num = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            switch (s.charAt(i)) {
+                case 'I':
+                    num = 1;
+                    break;
+                case 'V':
+                    num = 5;
+                    break;
+                case 'X':
+                    num = 10;
+                    break;
+                case 'L':
+                    num = 50;
+                    break;
+                case 'C':
+                    num = 100;
+                    break;
+                case 'D':
+                    num = 500;
+                    break;
+                case 'M':
+                    num = 1000;
+                    break;
+                default:
+                    System.out.println("invalid solution");
+            }
+            if (num < Int) {
+                Int -= num;
+            } else {
+                Int += num;
             }
         }
-        System.out.println("Sorted array:");
-        for (int i = 0; i < n; i++) {
-            System.out.print(" "+arr[i] );
-        }
+        return Int;
+    }
+    public static void main(String[] args) {
+        int num = RomanToInt("M");
+        System.out.println("the roman number is:"+num);
     }
 }
